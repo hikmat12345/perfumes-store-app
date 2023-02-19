@@ -27,11 +27,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/',  (req, res, next)=>{
-  return {"response":"hey"}
-});
-// app.use('https://git.heroku.com/video-gen-app.git', indexRouter);
-app.use('users', usersRouter);
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 app.use('/alcohlic-perfume', (req, res, next)=>{
   const alcohlicPerfumeSc =new alcohlicPerfume({
     name: req.body.name,
